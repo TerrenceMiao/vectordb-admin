@@ -1,4 +1,4 @@
-import type { AppConfig } from "../types";
+import type { AppConfig } from "@/lib/types";
 
 const localStorageItemKey = "vectordb-admin-config";
 

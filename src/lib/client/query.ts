@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getConfig } from "./localstorage";
+import { getConfig } from "@/lib/client/localstorage";
 
 import type { AppConfig, Collection, QueryResult } from "../types";
 

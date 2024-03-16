@@ -1,29 +1,29 @@
 export type AppConfig = {
-  connectionString: string
-  currentCollection: string
-}
+  connectionString: string;
+  currentCollection: string;
+};
 
 export type Collection = {
-  id: string
-  name: string
-}
+  id: string;
+  name: string;
+};
 
 export type Record = {
-  id: string
-  document: string
-  metadata: { source: string }
-  embedding: number[]
-  distance: number
-}
+  id: string;
+  document: string;
+  metadata: { source: string };
+  embedding: number[];
+  distance: number;
+};
 
 export type RecordsPage = {
-  total: number
-  page: number
-  records: Record[]
-}
+  total: number;
+  page: number;
+  records: Record[];
+};
 
 export type ErrorResponse = {
-  error: string
-}
+  error: string;
+};
 
-export type QueryResult = RecordsPage | ErrorResponse
+export type QueryResult = RecordsPage | ErrorResponse;
