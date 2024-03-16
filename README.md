@@ -34,3 +34,4 @@ export default {
 ## References
 
 - Chromadb Admin, _https://github.com/flanker/chromadb-admin_
+- Switching from Next.js to Vite + wouter, _https://www.peterbe.com/plog/next-to-vite-wouter_
