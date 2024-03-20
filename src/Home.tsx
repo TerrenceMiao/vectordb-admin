@@ -1,20 +1,22 @@
 import { useEffect } from "react";
-import { useLocation } from "wouter";
+import { useNavigate } from "react-router-dom";
 
-import { useGetConfig } from "@/lib/client/query";
+// import { useGetConfig } from "@/lib/client/query";
+import { getConfig } from "@/lib/client/localstorage";
 
 export default function Home() {
-  const [, setLocation] = useLocation();
-  const { data: appConfig } = useGetConfig();
+  const navigate = useNavigate();
+
+  // const { data: appConfig } = useGetConfig();
+  const appConfig = getConfig();
 
   useEffect(() => {
     if (appConfig?.connectionString) {
-      console.log("Connection String = " + JSON.stringify(appConfig));
-      setLocation("/collections");
+      navigate("/collections");
     } else {
-      setLocation("/setup");
+      navigate("/setup");
     }
-  }, [appConfig, setLocation]);
+  }, [appConfig, navigate]);
 
   return null;
 }

@@ -8,13 +8,13 @@ import {
 } from "@mantine/core";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { useLocation } from "wouter";
+import { useNavigate } from "react-router-dom";
 
 import { updateConnectionString } from "@/lib/client/localstorage";
 import { useGetConfig } from "@/lib/client/query";
 
 export default function Setup() {
-  const [, setLocation] = useLocation();
+  const navigate = useNavigate();
   const { data: appConfig } = useGetConfig();
   const [connectionString, setConnectionString] = useState(
     appConfig?.connectionString || ""
@@ -27,14 +27,15 @@ export default function Setup() {
   }, [appConfig]);
 
   const queryClient = useQueryClient();
+
   const connectButtonClicked = () => {
     updateConnectionString(connectionString);
     queryClient.setQueryData(["config"], { connectionString });
-    setLocation("/collections");
+    navigate("/collections");
   };
 
   const backButtonClicked = () => {
-    setLocation("/collections");
+    navigate("/collections");
   };
 
   return (
