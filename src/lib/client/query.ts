@@ -12,21 +12,21 @@ export function useGetConfig() {
   });
 }
 
-export function useGetCollections(config?: AppConfig) {
+export function useGetCollections(appConfig?: AppConfig) {
   return useQuery({
-    queryKey: ["config", config?.connectionString, "collections"],
+    queryKey: ["config", appConfig?.connectionString, "collections"],
     queryFn: async (): Promise<Collection[]> => {
       const response = await fetch(
-        `/api/collections?connectionString=${config?.connectionString}`
+        `/api/collections?connectionString=${appConfig?.connectionString}`
       );
       return response.json();
     },
-    enabled: !!config?.connectionString,
+    enabled: !!appConfig?.connectionString,
   });
 }
 
 export function useGetCollectionRecords(
-  config?: AppConfig,
+  appConfig?: AppConfig,
   collectionName?: string,
   page?: number,
   query?: string
@@ -36,12 +36,12 @@ export function useGetCollectionRecords(
     queryFn: async (): Promise<QueryResult> => {
       if (query === undefined || query === "") {
         const response = await fetch(
-          `/api/collections/${collectionName}/records?connectionString=${config?.connectionString}&page=${page}&query=${query}`
+          `/api/collections/${collectionName}/records?connectionString=${appConfig?.connectionString}&page=${page}&query=${query}`
         );
         return response.json();
       } else {
         const response = await fetch(
-          `/api/collections/${collectionName}/records?connectionString=${config?.connectionString}`,
+          `/api/collections/${collectionName}/records?connectionString=${appConfig?.connectionString}`,
           {
             method: "POST",
             body: JSON.stringify({ query: query }),
@@ -50,6 +50,6 @@ export function useGetCollectionRecords(
         return response.json();
       }
     },
-    enabled: !!config?.connectionString,
+    enabled: !!appConfig?.connectionString,
   });
 }

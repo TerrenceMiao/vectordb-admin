@@ -9,6 +9,7 @@ import ReactQueryProvider from "@/ReactQueryProvider";
 
 import Home from "@/Home";
 import Collections from "@/collections/Collections";
+import Collection from "@/collections/Collection";
 import Setup from "@/setup/Setup";
 
 function App() {
@@ -23,7 +24,11 @@ function App() {
     },
     {
       path: "/collections",
-      element: <Collections />,
+      element: <Collections children={undefined} />,
+    },
+    {
+      path: "/collections/:collectionName",
+      element: <Collection />,
     },
   ]);
 

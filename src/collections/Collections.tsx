@@ -1,4 +1,5 @@
-import RecordPage from "@/components/RecordPage";
+import { ReactNode, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   ActionIcon,
@@ -6,61 +7,63 @@ import {
   AppShell,
   AppShellHeader,
   AppShellMain,
+  Container,
   Group,
-  Select,
+  Paper,
   Text,
 } from "@mantine/core";
+
 import { IconSettings } from "@tabler/icons-react";
 
-import { useLocation } from "wouter";
+import { getConfig } from "@/lib/client/localstorage";
+import { useGetCollections } from "@/lib/client/query";
 
-import { useGetCollections, useGetConfig } from "@/lib/client/query";
+export default function Collections({ children }: { children: ReactNode }) {
+  const navigate = useNavigate();
 
-// import type { ReactNode } from "react";
+  // const { data: config } = useGetConfig();
+  const appConfig = getConfig();
 
-// export default function Collections({
-//   children,
-//   params,
-// }: {
-//   children: ReactNode;
-//   params: { name: string };
-// })
-export default function Collections() {
-  const { data: config } = useGetConfig();
-  // const { name: currentCollectionName } = params;
-  const currentCollectionName = "";
-  const { data: collections } = useGetCollections(config);
-  // const { name } = params;
-  const name = "anythingllm-workspace";
-  const [, setLocation] = useLocation();
+  useEffect(() => {
+    if (appConfig && !appConfig.connectionString) {
+      navigate(`/setup`);
+    }
+  }, [appConfig, navigate]);
 
-  const collectionChanged = (name: string | null) => {
-    setLocation(`/collections/${name}`);
-  };
+  //
+  const { data: collections } = useGetCollections(appConfig);
+
+  useEffect(() => {
+    if (collections != null && collections.length > 0) {
+      navigate(`/collections/${collections[0].name}`);
+    }
+  }, [collections, navigate]);
+
+  if (collections != null && collections.length === 0) {
+    return (
+      <Container ta={"center"}>
+        <Paper withBorder ta={"center"} shadow="md" p={30} radius="md" mt="xl">
+          <Text>There is no collections.</Text>
+          <Text>
+            <Link to={"/setup"}>Setup</Link> a new VectorDB instance.
+          </Text>
+        </Paper>
+      </Container>
+    );
+  }
 
   return (
     <AppShell header={{ height: 60 }} padding="md">
       <AppShellHeader>
         <Group h="100%" px="lg" justify="space-between">
           <Group>
-            <Text fw={700}>Chromadb Admin</Text>
-            {collections ? (
-              <Select
-                allowDeselect={false}
-                value={currentCollectionName}
-                data={collections?.map((c) => c.name)}
-                onChange={collectionChanged}
-              />
-            ) : (
-              <></>
-            )}
+            <Text fw={700}>VectorDB Admin</Text>
           </Group>
           <Group>
             <Text size="sm" c="dimmed">
-              {config?.connectionString}
+              {appConfig?.connectionString}
             </Text>
-            {/* <Anchor component={Link} href="/setup" title={"Setup"}> */}
-            <Anchor href="/setup" title={"Setup"}>
+            <Anchor component={Link} to="/setup" title={"Setup"}>
               <ActionIcon variant="default" aria-label="Settings" size={"lg"}>
                 <IconSettings stroke={1.5} />
               </ActionIcon>
@@ -68,9 +71,7 @@ export default function Collections() {
           </Group>
         </Group>
       </AppShellHeader>
-      <AppShellMain>
-        <RecordPage collectionName={name} />
-      </AppShellMain>
+      <AppShellMain>{children}</AppShellMain>
     </AppShell>
   );
 }
