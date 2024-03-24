@@ -28,7 +28,7 @@ function App() {
     },
     {
       path: "/collections/:collectionName",
-      element: <Collection />,
+      element: <Collection children={undefined} />,
     },
   ]);
 

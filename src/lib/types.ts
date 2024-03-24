@@ -10,8 +10,8 @@ export type Collection = {
 
 export type Record = {
   id: string;
-  document: string;
-  metadata: { source: string };
+  document: string | null;
+  metadata: { source: string | null };
   embedding: number[];
   distance: number;
 };
