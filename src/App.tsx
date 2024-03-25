@@ -8,8 +8,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ReactQueryProvider from "@/ReactQueryProvider";
 
 import Home from "@/Home";
-import Collections from "@/collections/Collections";
 import Collection from "@/collections/Collection";
+import Collections from "@/collections/Collections";
 import Setup from "@/setup/Setup";
 
 function App() {
@@ -24,19 +24,19 @@ function App() {
     },
     {
       path: "/collections",
-      element: <Collections children={undefined} />,
+      element: <Collections />,
     },
     {
       path: "/collections/:collectionName",
-      element: <Collection children={undefined} />,
+      element: <Collection />,
     },
   ]);
 
   return (
     <>
-      <ColorSchemeScript defaultColorScheme="auto" />
+      <ColorSchemeScript />
       <ReactQueryProvider>
-        <MantineProvider defaultColorScheme="auto">
+        <MantineProvider>
           <RouterProvider router={router} />
         </MantineProvider>
       </ReactQueryProvider>

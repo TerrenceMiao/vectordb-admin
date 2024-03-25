@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import {
@@ -18,11 +17,7 @@ import { useGetCollections } from "@/lib/client/query";
 
 import RecordPage from "@/components/RecordPage";
 
-export default function Collection({
-  params,
-}: {
-  children: ReactNode;
-}) {
+export default function Collection() {
   const { collectionName } = useParams();
 
   // const { data: appConfig } = useGetConfig();

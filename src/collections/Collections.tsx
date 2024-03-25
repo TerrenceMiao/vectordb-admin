@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import {
@@ -18,7 +18,7 @@ import { IconSettings } from "@tabler/icons-react";
 import { getConfig } from "@/lib/client/localstorage";
 import { useGetCollections } from "@/lib/client/query";
 
-export default function Collections({ children }: { children: ReactNode }) {
+export default function Collections() {
   const navigate = useNavigate();
 
   // const { data: config } = useGetConfig();
@@ -71,7 +71,7 @@ export default function Collections({ children }: { children: ReactNode }) {
           </Group>
         </Group>
       </AppShellHeader>
-      <AppShellMain>{children}</AppShellMain>
+      <AppShellMain></AppShellMain>
     </AppShell>
   );
 }
