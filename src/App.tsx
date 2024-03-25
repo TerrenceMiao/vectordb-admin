@@ -1,13 +1,7 @@
-import "./App.css";
-
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
-import "@mantine/core/styles.css";
-
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import ReactQueryProvider from "@/ReactQueryProvider";
-
 import Home from "@/Home";
+import ReactQueryProvider from "@/ReactQueryProvider";
 import Collection from "@/collections/Collection";
 import Collections from "@/collections/Collections";
 import Setup from "@/setup/Setup";
@@ -34,11 +28,8 @@ function App() {
 
   return (
     <>
-      <ColorSchemeScript />
       <ReactQueryProvider>
-        <MantineProvider>
-          <RouterProvider router={router} />
-        </MantineProvider>
+        <RouterProvider router={router} />
       </ReactQueryProvider>
     </>
   );
