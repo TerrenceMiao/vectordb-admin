@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getConfig } from "@/lib/client/localstorage";
 import {
   countRecord,
-  fetchCollections,
+  // fetchCollections,
   fetchRecords,
   queryRecords,
 } from "@/lib/server/db";
@@ -22,9 +22,15 @@ export function useGetCollections(appConfig?: AppConfig) {
   return useQuery({
     queryKey: ["config", appConfig?.connectionString, "collections"],
     queryFn: async (): Promise<Collection[]> => {
-      const data = await fetchCollections(appConfig!.connectionString);
-      return data;
+      const response = await fetch(
+        `/api/collections?connectionString=${appConfig?.connectionString}`
+      );
+      return response.json();
     },
+    // queryFn: async (): Promise<Collection[]> => {
+    //   const data = await fetchCollections(appConfig!.connectionString);
+    //   return data;
+    // },
     enabled: !!appConfig?.connectionString,
   });
 }
