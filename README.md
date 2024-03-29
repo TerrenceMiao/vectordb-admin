@@ -31,7 +31,18 @@ export default {
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
+## Performance
+
+Nodejs Package Manager `bun`, `npm`, `pnpnm` and `yarn` benchmark comparison:
+
+|                    |  install  |   build   |    run    |
+| :----------------- | --------: | --------: | --------: |
+| bun (ver 1.0.18)   | **1.96s** |   3.23s   |  _127ms_  |
+| npm (ver 10.2.3)   |   6.00s   | **3.22s** |   124ms   |
+| pnpm (ver 8.6.10)  |   6.60s   |  _3.52s_  |   126ms   |
+| yarn (ver 1.22.19) | _45.27s_  |   3.24s   | **122ms** |
+
+
 ## References
 
 - Chromadb Admin, _https://github.com/flanker/chromadb-admin_
-- Switching from Next.js to Vite + wouter, _https://www.peterbe.com/plog/next-to-vite-wouter_
