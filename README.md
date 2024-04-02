@@ -35,12 +35,12 @@ export default {
 
 Nodejs Package Manager `bun`, `npm`, `pnpnm` and `yarn` benchmark comparison:
 
-|                    |  install  |   build   |    run    |
-| :----------------- | --------: | --------: | --------: |
-| bun (ver 1.0.18)   | **1.96s** |   3.23s   |  _127ms_  |
-| npm (ver 10.2.3)   |   6.00s   | **3.22s** |   124ms   |
-| pnpm (ver 8.6.10)  |   6.60s   |  _3.52s_  |   126ms   |
-| yarn (ver 1.22.19) | _45.27s_  |   3.24s   | **122ms** |
+|                    |  install  |   build   | run (ready) |
+| :----------------- | --------: | --------: | ----------: |
+| bun (ver 1.1.0)    | **5.53s** |   3.23s   |    125ms    |
+| npm (ver 10.2.3)   |   6.00s   | **3.22s** |    124ms    |
+| pnpm (ver 8.6.10)  |   6.60s   |  _3.52s_  |   _126ms_   |
+| yarn (ver 1.22.19) | _45.27s_  |   3.24s   |  **122ms**  |
 
 
 ## References
