@@ -86,7 +86,7 @@ $$
 \end{array}\right)
 $$
 
-The formula is:
+The formula: _z_ = _Wx_ + _b_, _x_ is word embedding
 
 ```
 [ 1*0 + 1*1 + 0*0 + 0*0 ] + 0 = 1
