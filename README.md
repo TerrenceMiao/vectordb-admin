@@ -35,6 +35,78 @@ export default {
 
 ![Vector Database](Vector%20Database.gif)
 
+The input embedding vector:
+
+$$
+\left(\begin{array}{cc}
+0\\
+1\\
+0\\
+0
+\end{array}\right)
+$$
+
+is multiplied by the weight matrix _**W**_:
+
+$$
+\left(\begin{array}{cc}
+1 & 1 & 0 & 0\\
+0 & 1 & 0 & 1\\
+1 & 0 & 1 & 0\\
+1 & -1 & 0 & 0
+\end{array}\right)
+$$
+
+like:
+
+
+$$
+\left(\begin{array}{cc}
+1 & 1 & 0 & 0\\
+0 & 1 & 0 & 1\\
+1 & 0 & 1 & 0\\
+1 & -1 & 0 & 0
+\end{array}\right)
+\left(\begin{array}{cc}
+0\\
+1\\
+0\\
+0
+\end{array}\right)
+$$
+
+and then added with the bias vector _**b**_:
+
+$$
+\left(\begin{array}{cc}
+0\\
+0\\
+-1\\
+0
+\end{array}\right)
+$$
+
+The formula is:
+
+```
+[ 1*0 + 1*1 + 0*0 + 0*0 ] + 0 = 1
+
+[ 0*0 + 1*1 + 0*0 + 1*0 ] + 0 = 1
+
+[ 1*0 + 0*1 + 1*0 + 0*0 ] + (-1) = -1
+
+[ 1*0 + (-1)*1 + 0*0 + 0*0] + 0 = -1
+```
+
+$$
+\left(\begin{array}{cc}
+1\\
+1\\
+-1\\
+-1
+\end{array}\right)
+$$
+
 ## Performance
 
 Nodejs Package Manager `bun`, `npm`, `pnpnm` and `yarn` benchmark comparison:
