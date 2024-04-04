@@ -31,6 +31,10 @@ export default {
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
+## How Vector Database work
+
+![Vector Database](Vector%20Database.gif)
+
 ## Performance
 
 Nodejs Package Manager `bun`, `npm`, `pnpnm` and `yarn` benchmark comparison:
@@ -46,3 +50,4 @@ Nodejs Package Manager `bun`, `npm`, `pnpnm` and `yarn` benchmark comparison:
 ## References
 
 - Chromadb Admin, _https://github.com/flanker/chromadb-admin_
+- Deep Dive into Vector Databases by Hand, _https://towardsdatascience.com/deep-dive-into-vector-databases-by-hand-e9ab71f54f80_
