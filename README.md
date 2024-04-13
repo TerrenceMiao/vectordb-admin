@@ -123,3 +123,4 @@ Nodejs Package Manager `bun`, `npm`, `pnpnm` and `yarn` benchmark comparison:
 
 - Chromadb Admin, _https://github.com/flanker/chromadb-admin_
 - Deep Dive into Vector Databases by Hand, _https://towardsdatascience.com/deep-dive-into-vector-databases-by-hand-e9ab71f54f80_
+- LLM Visualization, _https://bbycroft.net/llm_
