@@ -31,6 +31,10 @@ export default {
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
+## Use cases of Vector Database in LLM applications
+
+![Use cases of Vector Database in LLM applications](Use%20cases%20of%20Vector%20Database%20in%20LLM%20applications.png)
+
 ## How Vector Database work
 
 ![Vector Database](Vector%20Database.gif)
